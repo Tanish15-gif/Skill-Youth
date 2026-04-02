@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Course Report</title>
+    <button class="btn" onclick="printPage()">
+        🖨️ Print / Download PDF
+    </button>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /*
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: url("bg-paper.png"); 
+    background-size: cover;
+}*/
+        .btn {
+            background: linear-gradient(135deg, #38BDF8, #0EA5E9);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-weight: 600;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.6);
+            transition: 0.3s;
+            cursor: pointer;
+            position: fixed;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
+        }
+
+
+        .report {
+            width: 95%;
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Header */
+
+        .header {
+            text-align: center;
+        }
+
+        .header h1 {
+            letter-spacing: 3px;
+        }
+
+
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 14px;
+            color: #555;
+        }
+
+        @page {
+            margin: 0;
+        }
+
+        @media print {
+            body {
+                margin: 1.5cm;
+            }
+        }
+
+        .Course-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 25px;
+            font-size: 16px
+        }
+
+        /* Header */
+        .Course-table thead {
+            background: #0EA5E9;
+            color: white;
+        }
+
+        .Course-table th {
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        /* Body */
+        .Course-table td {
+            padding: 12px;
+            word-break: break-word;
+            line-height: 1.5;
+            border-bottom: 1px solid #ddd;
+            vertical-align: middle;
+        }
+
+        /* Zebra rows */
+        .Course-table tbody tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        /* Hover effect */
+        .Course-table tbody tr:hover {
+            background: #e6f6ff;
+        }
+
+        /* Description column wider */
+        .Course-table td:nth-child(3) {
+            width: 45%;
+        }
+
+        /* Center number + duration */
+        .Course-table td:first-child,
+        .Course-table td:last-child {
+            text-align: center;
+            font-weight: 500;
+        }
+
+        /* Column sizing */
+        .Course-table th:nth-child(1),
+        .Course-table td:nth-child(1) {
+            width: 60px;
+            /* # */
+        }
+
+        .Course-table th:nth-child(2),
+        .Course-table td:nth-child(2) {
+            width: 90px;
+            /* Image */
+        }
+
+        .Course-table th:nth-child(3),
+        .Course-table td:nth-child(3) {
+            width: 220px;
+            /* Title */
+        }
+
+        .Course-table th:nth-child(5),
+        .Course-table td:nth-child(5) {
+            width: 120px;
+            /* Duration */
+        }
+
+
+        @media print {
+            .btn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="report">
+
+        <div class="header">
+            <h1>SKILLYOUTH</h1>
+            <h3>Course LIST</h3>
+            <p>Generated On: <span id="date"></span></p>
+        </div>
+        <div class="user-list">
+            <table class="Course-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Image</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Duration</th>
+                    </tr>
+                </thead>
+
+                <tbody id="CourseTable"></tbody>
+            </table>
+        </div>
+
+        <div class="footer">
+            © 2026 SkillYouth | Admin Report
+        </div>
+
+    </div>
+
+
+    <script>
+
+        // Auto Date
+        document.getElementById("date").innerText =
+            new Date().toLocaleDateString();
+
+
+        fetch("http://localhost:5080/Users/AdminDashBoard/ShowCourse")
+            .then(res => res.json())
+            .then(data => {
+
+                const tbody = document.getElementById("CourseTable");
+
+                tbody.innerHTML = "";
+
+                data.forEach((u, i) => {
+
+                    const row = document.createElement("tr");
+
+                    row.innerHTML = `
+                        <td>${i + 1}</td>
+                        <td> <img src="${u.url}" class="courses-img" alt="Course Image"> </td>
+                        <td>${u.title}</td>
+                        <td>${u.description}</td>
+                        <td>${u.duration}</td>
+                        `;
+
+                    tbody.appendChild(row);
+
+                });
+
+
+            });
+
+        function printPage() {
+            window.print();
+        }
+    </script>
+</body>
+
+</html>

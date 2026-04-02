@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - SkillYouth</title>
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                🎓 <span>Skill</span>Youth
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="nav-links" id="nav-links">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="signup.html">Sign Up</a></li>
+                </ul>
+                <div class="nav-buttons">
+                    <button id="admin-btn" class="modern-btn primary">Admin</button>
+                    <button id="logout-btn" class="modern-btn primary">Logout</button>
+                    <button id="add-admin-btn" class="modern-btn primary">Add Admin</button>
+                    <button id="theme-toggle" class="modern-btn outline">Toggle Theme</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="dashboard">
+            <div class="container">
+                <h1 style="text-align: center;">Welcome to Admin Dashboard</h1>
+                <h2>Hello <span id="display-name"></span></h2>
+                <p>Manage users, courses, and platform analytics.</p>
+
+                <div class="profile">
+                    <h2>Admin Profile</h2>
+                    <div class="profile-info">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAACUCAMAAAANv/M2AAAANlBMVEX////a2tqysrLd3d3X19eurq7q6url5eXt7e3S0tLw8PD7+/v4+Pji4uLHx8f19fW/v7+4uLj9PkyLAAAEQklEQVR4nO2b4c6rIAxAB0URnajv/7JXndvnNmxxWjC5PX9ucvMtnjQFaqm3myAIgiAIgiAIgiAIgiBcja6uq3Kmqusut00EtW1BgXoBAK2tc1tt09ytMsaob8b/tPcmt1+AroSQ7584lFfLlGoMMqY8aytb5fZcUQEl/Erxq2jXdJDX4b7CquzaHcqzdps9tyt8+QXJnCNNu9t4ps24/9XBXTkCY7JldvWj8qydKUXKA84jZY4UsYeUR2x657073TemTazc2MPOo3XiWJfHlSdsyryuznFOuofUJ+TGYp1sv25Ocx6tUyXI8Y1jJZ1oCzkroReSpHUXXfHHASkq1TOTYyJFgnQnOyfZQeKSAxbitLmdo8pR43w/jPTeRf0591okYwfKeV0Uemb81ztF/4bXmdzuwPV6MV68de9Ia95QU0U0eB3AU9as5V5HPNwMRUhaD1Rqc+7V+BsWmCGoPFujwTYln3ODPhnUpvNojUca+OqmOx7ofttZ6x4P9Z1NGl2G4TUYuRoZ37wwZ+WQ5JgTxKE/Z5NGs8OHN44Xhcd+bbic0bcsgytrYi2yVU1YSgMV6CnUWFZzJTXWIgUio+dQY9Jc9Qf6TDLQY6gzSGNnOJgYafRY5DnJa+SR4GKksXIPeFZijUWaXofUSuSRxmpp6jiMkOapmbCmY5Q0fpLnkD6cHuml1eGFmEP68D6dRZp21vpy0kdrDyZpvH1AV3kaL6h5pLHDZQR92Zro8d8znYh498IdCzTTMY43PeDQO6Jia33gT0W6HhNUv4ariUDMSaCVHn6wjHC11ulG3qY1sd0pvtct8voQNhcj2Tjluw4gO+TgQh3IYqCbvXz3idSTp9Xo9Ze2p9vqfH2PW9TogfPFSrsoPL4/L/C1xfAG5BMA1w/z9jcMvYu7LGJsQOKt3rU2KOecUdH3W4yt3j1jS9G+E5xNdfL64keA9fri+LRVGN65oJMnEJ4w336ePILwgPnyc8fU47wS4/Y79pGPKAtj3Ez4E4EvuJ3xqgnAOO/76U68eKAH751Bt78Uw1ebVfVo7PtBFx+1xyTe++0ub5Ippq1xoKlWQtjUTjIOtLHtBYvSt4j34cop0TxhYIrJ9TFtsYB2sinZz2FCUJ4K82IdKK2TTZu+7yDoRf4nw7t1yjH7t7QmuzTvvKVI0iH7VTMy6g5gzeq6mbMi/eY19I3PS4R5TlGYpOPTE48tJOra4pOlCZJ8vP42l9bwk/MykJB6uP7B+O61cw3+4TN9MnJrKmouBcFl+37LfhZHsRRFltx40O3e7x74vF/3qbgD/C3Mmr/qJyj3biCFT3ukBGnsd8sRC3PyE2WD+BwZsmfGHw0EOrzfQfacLbsfaOz46oLduRSDu0pirLlXvgh7TwPrFV8z9yj31i+96af99GWAva7wk3ttQc3dGqPA1tcXFgRBEARBEARBEARBEP47/gF0LzbDmIZz1QAAAABJRU5ErkJggg=="
+                            alt="Admin Profile Picture" class="profile-pic">
+                        <div class="details">
+                            <p><strong>Email: </strong><span id="display-email">Loading</span></p>
+                            <p><strong>Role: </strong>Admin</p>
+                            <p><strong>Join-Date: </strong><span id="display-date">Loading</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="user-management">
+                    <h3>Manage Users</h3>
+                    <ul>
+                        <li>Total Users: <span id="TotalUser">Loading...</span></li>
+                        <li>Active Users: 13</li>
+                        <li>New Signups This Month: 6</li>
+                    </ul>
+                    <button class="btn" id="view-users-btn">View All Users</button>
+                </div>
+                <div id="user-list" class="user-list" style="display: none;">
+                    <h2 class="page-title">All Users</h2>
+
+                    <table class="user-table">
+                        <thead>
+                            <tr>
+                                <th>Full Name</th>
+                                <th>Student Level</th>
+                                <th>Application Date</th>
+                            </tr>
+                        </thead>
+                        <tbody id="user-table-body">
+                        </tbody>
+                    </table>
+                    <button id="hide-users-btn" class="btn">Hide Users</button>
+                    <button onclick="downloadReport()" class="btn">⬇ Download Users</button>
+                </div><br>
+
+
+                <div id="courseModal" class="modal">
+
+                    <div class="modal-box">
+
+                        <span class="close-btn" id="closeCourseForm">&times;</span>
+
+                        <h2>Add New Course</h2>
+                        <p>Fill course details below</p>
+
+                        <form id="courseForm">
+
+                            <label>Course Title</label>
+                            <input type="text" id="course-title" required placeholder="Enter course title">
+
+                            <label>Description</label>
+                            <textarea required id="course-desc" placeholder="Enter description"></textarea>
+
+                            <label>Duration</label>
+                            <input type="text" id="course-duration" required placeholder="e.g. 3 Months">
+
+                            <label>Course Thumbnail</label>
+                            <input type="file" id="course-image" accept="image/*">
+
+                            <button type="submit" class="submit-btn" id="loginbtn" onclick="handleAddCourse()">
+                                Create Course
+                            </button>
+                            <p id="error-message" style="display: none; font-weight: bold;"></p>
+                        </form>
+
+                    </div>
+                </div>
+                <div class="course-management">
+                    <h1 style="text-align: center;">Course Management</h1>
+                    <h3>Add New Courses</h3><br>
+                    <button id="openCourseForm" class="btn">➕ Click Here</button>
+
+
+                    <h3>Manage Courses</h3>
+                    <ul>
+                        <li>Total Courses: <span id="TotalCourse">Loading...</span></li>
+                        <li>Popular Course: <b id="PopularCourse">Loading...</b>(Enrolled: <b id="EnrollCount"></b>)
+                        </li>
+                    </ul>
+                    <button class="btn" id="view-course-btn">View All Courses</button>
+                    <div id="course-list" class="user-list" style="display: none;">
+                        <h2 class="page-title">All Course</h2>
+
+                        <table class="user-table">
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Course Title</th>
+                                    <th>Course Description</th>
+                                    <th>Duration</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="course-table-body">
+                            </tbody>
+                        </table>
+                        <button id="hide-course-btn" class="btn">Hide Course</button>
+                        <button onclick="downloadCourseReport()" class="btn">⬇ Download Course</button>
+                    </div><br>
+                    <div id="editOverlay" class="edit-overlay">
+
+                        <div class="edit-panel">
+
+                            <h2>Edit Course</h2>
+
+                            <input type="hidden" id="editCourseId">
+
+                            <label>Course Image</label>
+                            <input type="file" id="edit-image" onchange="uploadEditImage(event)">
+                            <img id="previewImage" class="edit-preview">
+
+                            <label>Title</label>
+                            <input type="text" id="edit-title">
+
+                            <label>Description</label>
+                            <textarea id="edit-description"></textarea>
+
+                            <label>Duration</label>
+                            <input type="text" id="edit-duration">
+
+                            <div class="edit-buttons">
+                                <button onclick="saveEdit()" class="btn">Save</button>
+                                <button onclick="closeEdit()" class="btn">Cancel</button>
+                            </div>
+
+                            <p id="edit-error-message" class="error-text"></p>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="lesson-management" id="lesson-management-section" style="display:none;">
+
+
+                    <div class="admin-container">
+                        <div class="lesson-card">
+                            <h2 style="text-align:center; margin-bottom:20px;">
+                                📚 Lesson Management
+                            </h2>
+                            <h2>Create / Edit Lesson</h2>
+
+                            <h3 id="course-title-display">Loading Course Details</h3>
+
+                            <div class="form-group">
+                                <label for="lessonTitle">Lesson Title</label>
+                                <input type="text" id="lessonTitle" placeholder="Enter lesson title">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="orderIndex">Order Index</label>
+                                <input type="number" id="orderIndex" placeholder="Enter lesson order">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="headerImage">Header Image URL (Optional)</label>
+                                <input type="text" id="headerImage" placeholder="Paste image URL here">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Lesson Content</label>
+                                <div id="editor-container"></div>
+                            </div>
+
+                            <button class="btn" id="submit-btn">
+                                Save Lesson
+                            </button>
+
+                            <p id="Lesson-error-message" class="error-text"></p>
+
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+                <div class="analytics">
+                    <h3>Platform Analytics</h3>
+                    <div class="stat-grid">
+                        <div class="stat">
+                            <h4>Total Revenue</h4>
+                            <p>₹500</p>
+                        </div>
+                        <div class="stat">
+                            <h4>Page Views</h4>
+                            <p>6</p>
+                        </div>
+                        <div class="stat">
+                            <h4>Completion Rate</h4>
+                            <p>5%</p>
+                        </div>
+                        <div class="stat">
+                            <h4>Support Tickets</h4>
+                            <p>20</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="activities">
+                    <h3>Recent Admin Activities</h3>
+                    <ul>
+                        <li>Approved new course: Advanced Web Development (2 days ago)</li>
+                        <li>Banned user account for violation (1 week ago)</li>
+                        <li>Updated site analytics dashboard (2 weeks ago)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 SkillYouth. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="privacy.html">Privacy Policy</a> |
+            <a href="terms.html">Terms of Service</a> |
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </footer>
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/adminOperation.js"></script>
+    <script src="js/AdminDashBoard.js"></script>
+    <script src="js/ShowUsers.js"></script>
+    <script src="js/ShowCourse.js"></script>
+    <script src="js/downloadposter.js"></script>
+    <script src="js/EditModal.js"></script>
+    <script src="js/LessoEditor.js"></script>
+
+    <script src="js/AddCourse.js"></script>
+
+
+
+    <script>
+        const isAdmin = sessionStorage.getItem("adminAccessGranted");
+
+        if (isAdmin !== "true") {
+            alert("Unauthorized access. Please login first.");
+            window.location.href = "admin-login.html";
+        }
+    </script>
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+
+</body>
+
+</html>

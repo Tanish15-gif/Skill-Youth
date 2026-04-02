@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>SkillYouth Report</title>
+    <button class="btn" onclick="printPage()">
+        🖨️ Print / Download PDF
+    </button>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /*
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: url("bg-paper.png"); 
+    background-size: cover;
+}*/
+        .btn {
+            background: linear-gradient(135deg, #38BDF8, #0EA5E9);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-weight: 600;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.6);
+            transition: 0.3s;
+            cursor: pointer;
+            position: fixed;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
+        }
+
+
+        .report {
+            width: 800px;
+            margin: 40px auto;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Header */
+
+        .header {
+            text-align: center;
+        }
+
+        .header h1 {
+            letter-spacing: 3px;
+        }
+
+
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 14px;
+            color: #555;
+        }
+
+        @page {
+            margin: 0;
+        }
+
+        @media print {
+            body {
+                margin: 1.5cm;
+            }
+        }
+
+        @media print {
+            .btn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="report">
+
+        <div class="header">
+            <h1>SKILLYOUTH</h1>
+            <h3>STUDENT LIST</h3>
+            <p>Generated On: <span id="date"></span></p>
+        </div>
+        <div class="user-list">
+            <table class="user-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Full Name</th>
+                        <th>Level</th>
+                        <th>Join Date</th>
+                    </tr>
+                </thead>
+
+                <tbody id="userTable"></tbody>
+            </table>
+        </div>
+
+        <div class="footer">
+            © 2026 SkillYouth | Admin Report
+        </div>
+
+    </div>
+
+
+    <script>
+
+        // Auto Date
+        document.getElementById("date").innerText =
+            new Date().toLocaleDateString();
+
+
+        fetch("http://localhost:5080/Users/AdminDashBoard/ShowUser")
+            .then(res => res.json())
+            .then(data => {
+
+                const tbody = document.getElementById("userTable");
+
+                tbody.innerHTML = "";
+
+                data.forEach((u, i) => {
+
+                    tbody.innerHTML += `
+        <tr>
+          <td>${i + 1}</td>
+          <td>${u.fullName}</td>
+          <td>${u.level}</td>
+          <td>${new Date(u.joinDate).toLocaleDateString("en-IN")}</td>
+        </tr>
+      `;
+
+                });
+
+            });
+
+        function printPage() {
+            window.print();
+        }
+    </script>
+</body>
+
+</html>

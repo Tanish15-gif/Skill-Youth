@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudentDashboard - SkillYouth</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                🎓 <span>Skill</span>Youth
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="nav-links" id="nav-links">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="signup.html">Sign Up</a></li>
+                </ul>
+                <div class="nav-buttons">
+                    <button id="logout-btn" class="modern-btn primary">Logout</button>
+                    <button id="theme-toggle" class="modern-btn outline">Toggle Theme</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="dashboard">
+            <div class="container">
+                <h1 style="text-align: center;">Welcome to Student Dashboard</h1>
+                <h2>Hello <span id="name">Loading</span></h2>
+                <p>Track your progress and access personalized resources.</p>
+
+                <div class="profile">
+                    <h2>Your Profile</h2>
+                    <div class="profile-info">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAACUCAMAAAANv/M2AAAANlBMVEX////a2tqysrLd3d3X19eurq7q6url5eXt7e3S0tLw8PD7+/v4+Pji4uLHx8f19fW/v7+4uLj9PkyLAAAEQklEQVR4nO2b4c6rIAxAB0URnajv/7JXndvnNmxxWjC5PX9ucvMtnjQFaqm3myAIgiAIgiAIgiAIgiBcja6uq3Kmqusut00EtW1BgXoBAK2tc1tt09ytMsaob8b/tPcmt1+AroSQ7584lFfLlGoMMqY8aytb5fZcUQEl/Erxq2jXdJDX4b7CquzaHcqzdps9tyt8+QXJnCNNu9t4ps24/9XBXTkCY7JldvWj8qydKUXKA84jZY4UsYeUR2x657073TemTazc2MPOo3XiWJfHlSdsyryuznFOuofUJ+TGYp1sv25Ocx6tUyXI8Y1jJZ1oCzkroReSpHUXXfHHASkq1TOTYyJFgnQnOyfZQeKSAxbitLmdo8pR43w/jPTeRf0591okYwfKeV0Uemb81ztF/4bXmdzuwPV6MV68de9Ia95QU0U0eB3AU9as5V5HPNwMRUhaD1Rqc+7V+BsWmCGoPFujwTYln3ODPhnUpvNojUca+OqmOx7ofttZ6x4P9Z1NGl2G4TUYuRoZ37wwZ+WQ5JgTxKE/Z5NGs8OHN44Xhcd+bbic0bcsgytrYi2yVU1YSgMV6CnUWFZzJTXWIgUio+dQY9Jc9Qf6TDLQY6gzSGNnOJgYafRY5DnJa+SR4GKksXIPeFZijUWaXofUSuSRxmpp6jiMkOapmbCmY5Q0fpLnkD6cHuml1eGFmEP68D6dRZp21vpy0kdrDyZpvH1AV3kaL6h5pLHDZQR92Zro8d8znYh498IdCzTTMY43PeDQO6Jia33gT0W6HhNUv4ariUDMSaCVHn6wjHC11ulG3qY1sd0pvtct8voQNhcj2Tjluw4gO+TgQh3IYqCbvXz3idSTp9Xo9Ze2p9vqfH2PW9TogfPFSrsoPL4/L/C1xfAG5BMA1w/z9jcMvYu7LGJsQOKt3rU2KOecUdH3W4yt3j1jS9G+E5xNdfL64keA9fri+LRVGN65oJMnEJ4w336ePILwgPnyc8fU47wS4/Y79pGPKAtj3Ez4E4EvuJ3xqgnAOO/76U68eKAH751Bt78Uw1ebVfVo7PtBFx+1xyTe++0ub5Ippq1xoKlWQtjUTjIOtLHtBYvSt4j34cop0TxhYIrJ9TFtsYB2sinZz2FCUJ4K82IdKK2TTZu+7yDoRf4nw7t1yjH7t7QmuzTvvKVI0iH7VTMy6g5gzeq6mbMi/eY19I3PS4R5TlGYpOPTE48tJOra4pOlCZJ8vP42l9bwk/MykJB6uP7B+O61cw3+4TN9MnJrKmouBcFl+37LfhZHsRRFltx40O3e7x74vF/3qbgD/C3Mmr/qJyj3biCFT3ukBGnsd8sRC3PyE2WD+BwZsmfGHw0EOrzfQfacLbsfaOz46oLduRSDu0pirLlXvgh7TwPrFV8z9yj31i+96af99GWAva7wk3ttQc3dGqPA1tcXFgRBEARBEARBEARBEP47/gF0LzbDmIZz1QAAAABJRU5ErkJggg=="
+                            alt="Profile Picture" class="profile-pic">
+                        <div class="details">
+                            <p><strong>Email: </strong><span id="email">Loading..</span></p>
+                            <p><strong>Level: </strong><span id="level">Loading..</span></p>
+                            <p><strong>Member Since: </strong><span id="cretedat">Loading..</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <section class="courses">
+
+                    <h2>📚 My Courses</h2><br>
+
+                    <div id="course-container" class="course-grid">
+                    </div>
+
+                </section><br>
+                <div class="achievements">
+                    <h3>Achievements</h3>
+                    <ul>
+                        <li>🏆 Completed First Course: Introduction to Coding</li>
+                        <li>⭐ Earned 5 Badges in Digital Marketing</li>
+                        <li>🎯 Reached 100 Hours of Learning</li>
+                    </ul>
+                </div>
+
+                <div class="recommendations">
+                    <h3>Recommended for You</h3>
+                    <div class="course-cards">
+                        <div class="card">
+                            <h4>Advanced Web Development</h4>
+                            <p>Build dynamic websites with HTML, CSS, and JavaScript.</p>
+                            <a href="courses.html">Enroll Now</a>
+                        </div>
+                        <div class="card">
+                            <h4>SEO Mastery</h4>
+                            <p>Optimize your online presence and boost search rankings.</p>
+                            <a href="courses.html">Enroll Now</a>
+                        </div>
+                        <div class="card">
+                            <h4>Machine Learning Basics</h4>
+                            <p>Introduction to AI and predictive modeling.</p>
+                            <a href="courses.html">Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="activities">
+                    <h3>Recent Activities</h3>
+                    <ul>
+                        <li>Completed Module 3 in Introduction to Coding (2 days ago)</li>
+                        <li>Joined a study group for Digital Marketing (1 week ago)</li>
+                        <li>Earned a certificate for Graphic Design Basics (2 weeks ago)</li>
+                    </ul>
+                </div>
+
+                <div class="stats">
+                    <h3>Quick Stats</h3>
+                    <div class="stat-grid">
+                        <div class="stat">
+                            <h4>Total Courses Enrolled</h4>
+                            <p>3</p>
+                        </div>
+                        <div class="stat">
+                            <h4>Hours Learned</h4>
+                            <p>3</p>
+                        </div>
+                        <div class="stat">
+                            <h4>Certificates Earned</h4>
+                            <p>0</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2026 SkillYouth. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="privacy.html">Privacy Policy</a> |
+            <a href="terms.html">Terms of Service</a> |
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </footer>
+    <script src="js/theme.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/UserDashCourseDisplay.js"></script>
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+
+</html>
