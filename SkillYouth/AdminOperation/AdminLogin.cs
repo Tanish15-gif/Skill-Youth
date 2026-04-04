@@ -43,9 +43,9 @@ namespace Project.AdminOperation
                                 adminid = (int)reader["AdminId"];
                                 role = reader["Role"].ToString();
 
-                                Console.WriteLine($"[DEBUG] Found Admin ID: {adminid}");
-                                Console.WriteLine($"[DEBUG] DB Hash: {storedPass}");
-                                Console.WriteLine($"[DEBUG] Role: {role}");
+                                // Console.WriteLine($"[DEBUG] Found Admin ID: {adminid}");
+                                //Console.WriteLine($"[DEBUG] DB Hash: {storedPass}");
+                                //Console.WriteLine($"[DEBUG] Role: {role}");
                             }
                             else
                             {
