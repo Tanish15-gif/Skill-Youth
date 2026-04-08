@@ -1,4 +1,3 @@
-# Tell GitHub to ignore static web files for language stats
-wwwroot/css/* linguist-vendored
-wwwroot/lib/* linguist-vendored
-wwwroot/js/* linguist-vendored
+*.css linguist-vendored
+*.js linguist-vendored
+*.html linguist-vendored
